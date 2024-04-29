@@ -37,10 +37,9 @@ extension WidgetExtensionX on Widget {
       );
 
   Expanded expanded({int flex = 1}) => Expanded(
-        child: this,
         flex: flex,
+        child: this,
       );
-  
 }
 
 extension DurationFormatter on Duration {

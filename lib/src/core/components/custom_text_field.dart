@@ -65,6 +65,7 @@ class CustomTextField<T extends Object> extends FormField<T> {
   final String? textFieldLabel;
 
   BorderRadius get radius => borderRadius ?? BorderRadius.circular(8);
+  final ValueNotifier<bool> hasPasswordHandler = ValueNotifier<bool>(true);
 
   BorderSide get buildBorderSide =>
       borderSide ??
@@ -88,68 +89,83 @@ class CustomTextField<T extends Object> extends FormField<T> {
                 style: AppTextStyles.text18Px.textGrey,
               ),
             if (textFieldLabel != null) 10.verticalSpace,
-            TextFormField(
-              autofocus: autoFocus ?? false,
-              initialValue: initialValues,
-              inputFormatters: inputFormatters,
-              obscureText: isPasswordField,
-              style: AppTextStyles.text18PxMedium.black,
-              controller: controller,
-              keyboardType: inputType,
-              onTap: onTap,
-              textInputAction: inputAction,
-              onChanged: onChanged,
-              maxLines: maxLines,
-              validator: validators,
-              textCapitalization: textCapitalization ?? TextCapitalization.none,
-              readOnly: readOnly,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: fillColor,
-                contentPadding: fieldContentPadding ?? const EdgeInsets.all(16),
-                border: OutlineInputBorder(
-                  borderRadius: radius,
-                  borderSide: buildBorderSide,
-                ),
-                focusColor: AppColors.primary,
-                errorBorder: OutlineInputBorder(
-                  borderRadius: radius,
-                  borderSide: buildBorderSide,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: radius,
-                  borderSide: buildBorderSide,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: radius,
-                  borderSide: buildBorderSide.copyWith(
-                    color: AppColors.textLightDark.withOpacity(.15),
-                  ),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: radius,
-                  borderSide: buildBorderSide,
-                ),
-                errorText: errorText != null && errorText!.isNotEmpty ? errorText : null,
-                hintText: hintText,
-                suffixIcon: hasError && !isPasswordField && suffixIcon == null ? const Icon(Icons.error_outline) : suffixIcon,
-                suffix: suffix,
-                prefix: prefix,
-                prefixIcon: prefixIcon != null
-                    ? Padding(
-                        padding: const EdgeInsets.all(11.0),
-                        child: prefixIcon,
-                      )
-                    : null,
-                labelText: labelText,
-                labelStyle: AppTextStyles.text14PxMedium.copyWith(
-                  color: AppColors.textLightDark,
-                ),
-                hintStyle: hintStyle ??
-                    AppTextStyles.text16Px.copyWith(
-                      color: AppColors.textLightDark.withOpacity(.25),
+            ValueListenableBuilder(
+              builder: (context, value, _) {
+                return TextFormField(
+                  autofocus: autoFocus ?? false,
+                  initialValue: initialValues,
+                  inputFormatters: inputFormatters,
+                  obscureText: isPasswordField && !hasPasswordHandler.value,
+                  style: AppTextStyles.text18PxMedium.black,
+                  controller: controller,
+                  keyboardType: inputType,
+                  onTap: onTap,
+                  textInputAction: inputAction,
+                  onChanged: onChanged,
+                  maxLines: maxLines,
+                  validator: validators,
+                  textCapitalization: textCapitalization ?? TextCapitalization.none,
+                  readOnly: readOnly,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: fillColor,
+                    contentPadding: fieldContentPadding ?? const EdgeInsets.all(16),
+                    border: OutlineInputBorder(
+                      borderRadius: radius,
+                      borderSide: buildBorderSide,
                     ),
-              ),
+                    focusColor: AppColors.primary,
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: radius,
+                      borderSide: buildBorderSide,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: radius,
+                      borderSide: buildBorderSide,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: radius,
+                      borderSide: buildBorderSide.copyWith(
+                        color: AppColors.textLightDark.withOpacity(.15),
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: radius,
+                      borderSide: buildBorderSide,
+                    ),
+                    errorText: errorText != null && errorText!.isNotEmpty ? errorText : null,
+                    hintText: hintText,
+                    suffixIcon: isPasswordField
+                        ? GestureDetector(
+                            onTap: () {
+                              hasPasswordHandler.value = !hasPasswordHandler.value;
+                            },
+                            child: Icon(
+                              hasPasswordHandler.value ? Icons.remove_red_eye : Icons.visibility_off,
+                              size: 18,
+                            ),
+                          )
+                        : suffixIcon,
+                    suffix: suffix,
+                    prefix: prefix,
+                    prefixIcon: prefixIcon != null
+                        ? Padding(
+                            padding: const EdgeInsets.all(11.0),
+                            child: prefixIcon,
+                          )
+                        : null,
+                    labelText: labelText,
+                    labelStyle: AppTextStyles.text14PxMedium.copyWith(
+                      color: AppColors.textLightDark,
+                    ),
+                    hintStyle: hintStyle ??
+                        AppTextStyles.text16Px.copyWith(
+                          color: AppColors.textLightDark.withOpacity(.25),
+                        ),
+                  ),
+                );
+              },
+              valueListenable: hasPasswordHandler,
             ),
           ],
         );

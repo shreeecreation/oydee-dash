@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../theme/app_styles.dart';
 import '../theme/theme.dart';
 
 extension TypographyExtension on TextStyle {
