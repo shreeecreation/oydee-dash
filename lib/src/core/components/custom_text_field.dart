@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oydeeedashboard/src/core/core.dart';
 
 class CustomTextField<T extends Object> extends FormField<T> {
   CustomTextField(
-      {this.hintText,
+      {super.key,
+      this.hintText,
       this.onChanged,
       this.errorText,
       this.suffixIcon,
@@ -27,8 +29,9 @@ class CustomTextField<T extends Object> extends FormField<T> {
       this.maxLines = 1,
       this.inputFormatters = const [],
       this.hintStyle,
-      this.fillColor,
-      this.autoFocus})
+      this.fillColor = AppColors.white,
+      this.autoFocus,
+      this.textFieldLabel})
       : super(builder: (state) {
           return _CustomTextField<T>().builder(state);
         });
@@ -59,6 +62,7 @@ class CustomTextField<T extends Object> extends FormField<T> {
   final bool? autoFocus;
   final int? maxLines;
   final List<TextInputFormatter> inputFormatters;
+  final String? textFieldLabel;
 
   BorderRadius get radius => borderRadius ?? BorderRadius.circular(8);
 
@@ -74,63 +78,80 @@ class CustomTextField<T extends Object> extends FormField<T> {
 
   @override
   FormFieldBuilder<T> get builder => (field) {
-        return TextFormField(
-          autofocus: autoFocus ?? false,
-          initialValue: initialValues,
-          inputFormatters: inputFormatters,
-          obscureText: isPasswordField,
-          style: AppStyles.text14PxMedium.black,
-          controller: controller,
-          keyboardType: inputType,
-          onTap: onTap,
-          textInputAction: inputAction,
-          onChanged: onChanged,
-          maxLines: maxLines,
-          validator: validators,
-          textCapitalization: textCapitalization ?? TextCapitalization.none,
-          readOnly: readOnly,
-          decoration: InputDecoration(
-            fillColor: fillColor != null ? fillColor : null,
-            contentPadding: fieldContentPadding ?? const EdgeInsets.all(16),
-            border: OutlineInputBorder(
-              borderRadius: radius,
-              borderSide: buildBorderSide,
-            ),
-            focusColor: AppColors.primary,
-            errorBorder: OutlineInputBorder(
-              borderRadius: radius,
-              borderSide: buildBorderSide,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: radius,
-              borderSide: buildBorderSide,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: radius,
-              borderSide: buildBorderSide.copyWith(
-                color: AppColors.textLightDark,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (textFieldLabel != null)
+              Text(
+                textFieldLabel ?? "",
+                style: AppTextStyles.text18Px.textGrey,
+              ),
+            if (textFieldLabel != null) 10.verticalSpace,
+            TextFormField(
+              autofocus: autoFocus ?? false,
+              initialValue: initialValues,
+              inputFormatters: inputFormatters,
+              obscureText: isPasswordField,
+              style: AppTextStyles.text18PxMedium.black,
+              controller: controller,
+              keyboardType: inputType,
+              onTap: onTap,
+              textInputAction: inputAction,
+              onChanged: onChanged,
+              maxLines: maxLines,
+              validator: validators,
+              textCapitalization: textCapitalization ?? TextCapitalization.none,
+              readOnly: readOnly,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: fillColor,
+                contentPadding: fieldContentPadding ?? const EdgeInsets.all(16),
+                border: OutlineInputBorder(
+                  borderRadius: radius,
+                  borderSide: buildBorderSide,
+                ),
+                focusColor: AppColors.primary,
+                errorBorder: OutlineInputBorder(
+                  borderRadius: radius,
+                  borderSide: buildBorderSide,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: radius,
+                  borderSide: buildBorderSide,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: radius,
+                  borderSide: buildBorderSide.copyWith(
+                    color: AppColors.textLightDark.withOpacity(.15),
+                  ),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: radius,
+                  borderSide: buildBorderSide,
+                ),
+                errorText: errorText != null && errorText!.isNotEmpty ? errorText : null,
+                hintText: hintText,
+                suffixIcon: hasError && !isPasswordField && suffixIcon == null ? const Icon(Icons.error_outline) : suffixIcon,
+                suffix: suffix,
+                prefix: prefix,
+                prefixIcon: prefixIcon != null
+                    ? Padding(
+                        padding: const EdgeInsets.all(11.0),
+                        child: prefixIcon,
+                      )
+                    : null,
+                labelText: labelText,
+                labelStyle: AppTextStyles.text14PxMedium.copyWith(
+                  color: AppColors.textLightDark,
+                ),
+                hintStyle: hintStyle ??
+                    AppTextStyles.text16Px.copyWith(
+                      color: AppColors.textLightDark.withOpacity(.25),
+                    ),
               ),
             ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: radius,
-              borderSide: buildBorderSide,
-            ),
-            errorText: errorText != null && errorText!.isNotEmpty ? errorText : null,
-            hintText: hintText,
-            suffixIcon: hasError && !isPasswordField && suffixIcon == null ? const Icon(Icons.error_outline) : suffixIcon,
-            suffix: suffix,
-            prefix: prefix,
-            prefixIcon: prefixIcon,
-            labelText: labelText,
-            labelStyle: AppStyles.text14PxMedium.copyWith(
-              color: AppColors.textLightDark,
-            ),
-            hintStyle: hintStyle == null
-                ? AppStyles.text16Px.copyWith(
-                    color: AppColors.textLightDark.withOpacity(.8),
-                  )
-                : hintStyle,
-          ),
+          ],
         );
       };
 }

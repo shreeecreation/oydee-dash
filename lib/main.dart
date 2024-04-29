@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'src/features/auth/auth.dart';
 
@@ -11,6 +12,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: LoginPage());
+    return ScreenUtilInit(designSize: const Size(1980, 1080), child: const MaterialApp(home: LoginPage()));
   }
 }

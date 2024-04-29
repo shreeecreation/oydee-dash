@@ -2,438 +2,553 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-abstract class AppStyles {
-  // text 9px
-  //regular
-  static TextStyle text9Px = GoogleFonts.dmSans(
+class AppTextStyles {
+  static TextStyle text9Px = GoogleFonts.plusJakartaSans(
     fontSize: 9.sp,
     height: calculateHeight(11, 9),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text9PxMedium = GoogleFonts.dmSans(
+// Text 9px Medium
+  static TextStyle text9PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 9.sp,
     fontWeight: FontWeight.w500,
     height: calculateHeight(11, 9),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text9PxSemiBold = GoogleFonts.dmSans(
-    fontSize: 10.sp,
+// Text 9px SemiBold
+  static TextStyle text9PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 9.sp,
     fontWeight: FontWeight.w600,
     height: calculateHeight(11, 9),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text9PxBold = GoogleFonts.dmSans(
+// Text 10px
+  static TextStyle text10Px = GoogleFonts.plusJakartaSans(
     fontSize: 10.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(12, 10),
     fontStyle: FontStyle.normal,
   );
 
-  static TextStyle text10Px = GoogleFonts.dmSans(
-    fontSize: 10.sp,
-    height: calculateHeight(11, 9),
-    fontStyle: FontStyle.normal,
-  );
-
-  //medium
-  static TextStyle text10PxMedium = GoogleFonts.dmSans(
+// Text 10px Medium
+  static TextStyle text10PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 10.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(12, 10),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text10PxSemiBold = GoogleFonts.dmSans(
+// Text 10px SemiBold
+  static TextStyle text10PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 10.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(12, 10),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text10PxBold = GoogleFonts.dmSans(
-    fontSize: 10.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(11, 9),
-    fontStyle: FontStyle.normal,
-  );
-
-//text 11Px
-  static TextStyle text11Px = GoogleFonts.dmSans(
+// Text 11px
+  static TextStyle text11Px = GoogleFonts.plusJakartaSans(
     fontSize: 11.sp,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(13, 11),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text11xMedium = GoogleFonts.dmSans(
+// Text 11px Medium
+  static TextStyle text11PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 11.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(13, 11),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text11PxSemiBold = GoogleFonts.dmSans(
+// Text 11px SemiBold
+  static TextStyle text11PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 11.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(11, 9),
+    height: calculateHeight(13, 11),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text11PxBold = GoogleFonts.dmSans(
-    fontSize: 11.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(11, 9),
-    fontStyle: FontStyle.normal,
-  );
-  // text 12px
-
-  //regular
-  static TextStyle text12Px = GoogleFonts.dmSans(
+// Text 12px
+  static TextStyle text12Px = GoogleFonts.plusJakartaSans(
     fontSize: 12.sp,
     height: calculateHeight(14, 12),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text12PxMedium = GoogleFonts.dmSans(
+// Text 12px Medium
+  static TextStyle text12PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
     height: calculateHeight(14, 12),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text12PxSemiBold = GoogleFonts.dmSans(
+// Text 12px SemiBold
+  static TextStyle text12PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
     height: calculateHeight(14, 12),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text12PxBold = GoogleFonts.dmSans(
-    fontSize: 12.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(14, 12),
-    fontStyle: FontStyle.normal,
-  );
-
-  // text 13px
-  //regular
-  static TextStyle text13Px = GoogleFonts.dmSans(
+// Text 13px
+  static TextStyle text13Px = GoogleFonts.plusJakartaSans(
     fontSize: 13.sp,
-    height: calculateHeight(17, 13),
+    height: calculateHeight(15, 13),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text13PxMedium = GoogleFonts.dmSans(
+// Text 13px Medium
+  static TextStyle text13PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 13.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(17, 13),
+    height: calculateHeight(15, 13),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text13PxSemiBold = GoogleFonts.dmSans(
+// Text 13px SemiBold
+  static TextStyle text13PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 13.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(17, 13),
+    height: calculateHeight(15, 13),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text13PxBold = GoogleFonts.dmSans(
-    fontSize: 13.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(17, 13),
-    fontStyle: FontStyle.normal,
-  );
-
-  // text 14px
-  //regular
-  static TextStyle text14Px = GoogleFonts.dmSans(
+// Text 14px
+  static TextStyle text14Px = GoogleFonts.plusJakartaSans(
     fontSize: 14.sp,
-    height: calculateHeight(17, 14),
+    height: calculateHeight(16, 14),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text14PxMedium = GoogleFonts.dmSans(
+// Text 14px Medium
+  static TextStyle text14PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(17, 14),
+    height: calculateHeight(16, 14),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text14PxSemiBold = GoogleFonts.dmSans(
+// Text 14px SemiBold
+  static TextStyle text14PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(17, 14),
+    height: calculateHeight(16, 14),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text14PxBold = GoogleFonts.dmSans(
+// Text 14px Bold
+  static TextStyle text14PxBold = GoogleFonts.plusJakartaSans(
     fontSize: 14.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(17, 14),
+    fontWeight: FontWeight.w700,
+    height: calculateHeight(16, 14),
+    fontStyle: FontStyle.normal,
+  );
+// Text 15px
+  static TextStyle text15Px = GoogleFonts.plusJakartaSans(
+    fontSize: 15.sp,
+    height: calculateHeight(17, 15),
     fontStyle: FontStyle.normal,
   );
 
-  // text 16px
-  //regular
-  static TextStyle text16Px = GoogleFonts.dmSans(
+// Text 15px Medium
+  static TextStyle text15PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(17, 15),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 15px SemiBold
+  static TextStyle text15PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(17, 15),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 16px
+  static TextStyle text16Px = GoogleFonts.plusJakartaSans(
     fontSize: 16.sp,
-    height: calculateHeight(19, 16),
+    height: calculateHeight(18, 16),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text16PxMedium = GoogleFonts.dmSans(
+// Text 16px Medium
+  static TextStyle text16PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(19, 16),
+    height: calculateHeight(18, 16),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text16PxSemiBold = GoogleFonts.dmSans(
+// Text 16px SemiBold
+  static TextStyle text16PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(19, 16),
+    height: calculateHeight(18, 16),
     fontStyle: FontStyle.normal,
   );
-
-  //bold
-  static TextStyle text16PxBold = GoogleFonts.dmSans(
+  static TextStyle text16PxBold = GoogleFonts.plusJakartaSans(
     fontSize: 16.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(19, 16),
+    fontWeight: FontWeight.w700,
+    height: calculateHeight(18, 16),
     fontStyle: FontStyle.normal,
   );
 
-  // text 18px
-  //regular
-  static TextStyle text18Px = GoogleFonts.dmSans(
+// Text 17px
+  static TextStyle text17Px = GoogleFonts.plusJakartaSans(
+    fontSize: 17.sp,
+    height: calculateHeight(19, 17),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 17px Medium
+  static TextStyle text17PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 17.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(19, 17),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 17px SemiBold
+  static TextStyle text17PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 17.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(19, 17),
+    fontStyle: FontStyle.normal,
+  );
+  static TextStyle text18Px = GoogleFonts.plusJakartaSans(
     fontSize: 18.sp,
-    height: calculateHeight(21, 18),
+    height: calculateHeight(22, 18),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text18PxMedium = GoogleFonts.dmSans(
+// Text 18px Medium
+  static TextStyle text18PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(21, 18),
+    height: calculateHeight(22, 18),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text18PxSemiBold = GoogleFonts.dmSans(
+// Text 18px SemiBold
+  static TextStyle text18PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(21, 18),
+    height: calculateHeight(22, 18),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text18PxBold = GoogleFonts.dmSans(
+  // Text 18px SemiBold
+  static TextStyle text18PxBold = GoogleFonts.plusJakartaSans(
     fontSize: 18.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(21, 18),
+    fontWeight: FontWeight.w700,
+    height: calculateHeight(22, 18),
     fontStyle: FontStyle.normal,
   );
 
-  // text 20px
-  //regular
-  static TextStyle text20Px = GoogleFonts.dmSans(
+// Text 19px
+  static TextStyle text19Px = GoogleFonts.plusJakartaSans(
+    fontSize: 19.sp,
+    height: calculateHeight(23, 19),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 19px Medium
+  static TextStyle text19PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 19.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(23, 19),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 19px SemiBold
+  static TextStyle text19PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 19.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(23, 19),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 20px
+  static TextStyle text20Px = GoogleFonts.plusJakartaSans(
     fontSize: 20.sp,
     height: calculateHeight(24, 20),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text20PxMedium = GoogleFonts.dmSans(
+// Text 20px Medium
+  static TextStyle text20PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 20.sp,
     fontWeight: FontWeight.w500,
     height: calculateHeight(24, 20),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text20PxSemiBold = GoogleFonts.dmSans(
+// Text 20px SemiBold
+  static TextStyle text20PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
     height: calculateHeight(24, 20),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text20PxBold = GoogleFonts.dmSans(
+  static TextStyle text20PxBold = GoogleFonts.plusJakartaSans(
     fontSize: 20.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     height: calculateHeight(24, 20),
     fontStyle: FontStyle.normal,
   );
 
-  // text 24px
-  //regular
-  static TextStyle text24Px = GoogleFonts.dmSans(
+// Text 21px
+  static TextStyle text21Px = GoogleFonts.plusJakartaSans(
+    fontSize: 21.sp,
+    height: calculateHeight(25, 21),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 21px Medium
+  static TextStyle text21PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 21.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(25, 21),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 21px SemiBold
+  static TextStyle text21PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 21.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(25, 21),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 22px
+  static TextStyle text22Px = GoogleFonts.plusJakartaSans(
+    fontSize: 22.sp,
+    height: calculateHeight(26, 22),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 22px Medium
+  static TextStyle text22PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(26, 22),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 22px SemiBold
+  static TextStyle text22PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(26, 22),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 23px
+  static TextStyle text23Px = GoogleFonts.plusJakartaSans(
+    fontSize: 23.sp,
+    height: calculateHeight(27, 23),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 23px Medium
+  static TextStyle text23PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 23.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(27, 23),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 23px SemiBold
+  static TextStyle text23PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 23.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(27, 23),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 24px
+  static TextStyle text24Px = GoogleFonts.plusJakartaSans(
     fontSize: 24.sp,
     height: calculateHeight(28, 24),
     fontStyle: FontStyle.normal,
   );
 
-  //medium
-  static TextStyle text24PxMedium = GoogleFonts.dmSans(
+// Text 24px Medium
+  static TextStyle text24PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 24.sp,
     fontWeight: FontWeight.w500,
     height: calculateHeight(28, 24),
     fontStyle: FontStyle.normal,
   );
 
-  //SemiBold
-  static TextStyle text24PxSemiBold = GoogleFonts.dmSans(
+// Text 24px SemiBold
+  static TextStyle text24PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
     height: calculateHeight(28, 24),
     fontStyle: FontStyle.normal,
   );
 
-  //bold
-  static TextStyle text24PxBold = GoogleFonts.dmSans(
+// Text 24px Bold
+  static TextStyle text24PxBold = GoogleFonts.plusJakartaSans(
     fontSize: 24.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     height: calculateHeight(28, 24),
+    letterSpacing: 1,
     fontStyle: FontStyle.normal,
   );
 
-  // text 36px
-  //regular
-  static TextStyle text36Px = GoogleFonts.dmSans(
-    fontSize: 36.sp,
-    height: calculateHeight(43, 36),
+// Text 25px
+  static TextStyle text25Px = GoogleFonts.plusJakartaSans(
+    fontSize: 25.sp,
+    height: calculateHeight(29, 25),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //medium
-  static TextStyle text36PxMedium = GoogleFonts.dmSans(
-    fontSize: 36.sp,
+// Text 25px Medium
+  static TextStyle text25PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 25.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(29, 25),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //SemiBold
-  static TextStyle text36PxSemiBold = GoogleFonts.dmSans(
-    fontSize: 36.sp,
+// Text 25px SemiBold
+  static TextStyle text25PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 25.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(29, 25),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //bold
-  static TextStyle text36PxBold = GoogleFonts.dmSans(
-    fontSize: 36.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(43, 36),
+// Text 26px
+  static TextStyle text26Px = GoogleFonts.plusJakartaSans(
+    fontSize: 26.sp,
+    height: calculateHeight(30, 26),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
-  );
-  // text 34px
-  //regular
-  static TextStyle text34 = TextStyle(
-    fontSize: 34.sp,
-    height: calculateHeight(43, 36),
-    fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //medium
-  static TextStyle text34PxMedium = TextStyle(
-    fontSize: 34.sp,
+// Text 26px Medium
+  static TextStyle text26PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 26.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(30, 26),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //SemiBold
-  static TextStyle text34PxSemiBold = TextStyle(
-    fontSize: 34.sp,
+// Text 26px SemiBold
+  static TextStyle text26PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 26.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(30, 26),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //bold
-  static TextStyle text34PxBold = TextStyle(
-    fontSize: 34.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(43, 36),
+// Text 27px
+  static TextStyle text27Px = GoogleFonts.plusJakartaSans(
+    fontSize: 27.sp,
+    height: calculateHeight(31, 27),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //bold
-  static TextStyle text56PxBold = GoogleFonts.dmSans(
-    fontSize: 56.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(67, 56),
+// Text 27px Medium
+  static TextStyle text27PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 27.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(31, 27),
     fontStyle: FontStyle.normal,
   );
-  // text 30px
-  //regular
-  static TextStyle text30 = TextStyle(
+
+// Text 27px SemiBold
+  static TextStyle text27PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 27.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(31, 27),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 28px
+  static TextStyle text28Px = GoogleFonts.plusJakartaSans(
+    fontSize: 28.sp,
+    height: calculateHeight(34, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 28px Medium
+  static TextStyle text28PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(34, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 28px SemiBold
+  static TextStyle text28PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(34, 28),
+    fontStyle: FontStyle.normal,
+  );
+  // Text 28px SemiBold
+  static TextStyle text28PxBold = GoogleFonts.plusJakartaSans(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w700,
+    height: calculateHeight(34, 28),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 29px
+  static TextStyle text29Px = GoogleFonts.plusJakartaSans(
+    fontSize: 29.sp,
+    height: calculateHeight(35, 29),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 29px Medium
+  static TextStyle text29PxMedium = GoogleFonts.plusJakartaSans(
+    fontSize: 29.sp,
+    fontWeight: FontWeight.w500,
+    height: calculateHeight(35, 29),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 29px SemiBold
+  static TextStyle text29PxSemiBold = GoogleFonts.plusJakartaSans(
+    fontSize: 29.sp,
+    fontWeight: FontWeight.w600,
+    height: calculateHeight(35, 29),
+    fontStyle: FontStyle.normal,
+  );
+
+// Text 30px
+  static TextStyle text30Px = GoogleFonts.plusJakartaSans(
     fontSize: 30.sp,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(36, 30),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //medium
-  static TextStyle text30PxMedium = TextStyle(
+// Text 30px Medium
+  static TextStyle text30PxMedium = GoogleFonts.plusJakartaSans(
     fontSize: 30.sp,
     fontWeight: FontWeight.w500,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(36, 30),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
 
-  //SemiBold
-  static TextStyle text30PxSemiBold = TextStyle(
+// Text 30px SemiBold
+  static TextStyle text30PxSemiBold = GoogleFonts.plusJakartaSans(
     fontSize: 30.sp,
     fontWeight: FontWeight.w600,
-    height: calculateHeight(43, 36),
+    height: calculateHeight(36, 30),
     fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
   );
-
-  //bold
-  static TextStyle text30PxBold = TextStyle(
-    fontSize: 30.sp,
-    fontWeight: FontWeight.bold,
-    height: calculateHeight(43, 36),
-    fontStyle: FontStyle.normal,
-    letterSpacing: calculateSpacing(-0.02),
-  );
-
   // calculate line height of text
   static double calculateHeight(double height, double fontSize) {
     return height.h / fontSize.sp;

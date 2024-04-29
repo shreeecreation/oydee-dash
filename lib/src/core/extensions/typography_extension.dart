@@ -26,8 +26,7 @@ extension TypographyExtension on TextStyle {
   TextStyle get ironGrey => copyWith(color: AppColors.ironGrey);
 
   TextStyle get brandBackground => copyWith(color: AppColors.brandBackground);
-  TextStyle get brandBackgroundLight =>
-      copyWith(color: AppColors.brandBackgroundLight);
+  TextStyle get brandBackgroundLight => copyWith(color: AppColors.brandBackgroundLight);
 
   TextStyle get white => copyWith(color: AppColors.white);
 
@@ -40,10 +39,8 @@ extension TypographyExtension on TextStyle {
   TextStyle get softPrimary => copyWith(color: AppColors.softPrimary);
 
   //line height
-  TextStyle lineHeight(double px) =>
-      copyWith(height: AppStyles.calculateHeight(px, fontSize!));
+  TextStyle lineHeight(double px) => copyWith(height: AppTextStyles.calculateHeight(px, fontSize!));
 
   // letter spacing
-  TextStyle spacing(double em) =>
-      copyWith(height: AppStyles.calculateSpacing(em));
+  TextStyle spacing(double em) => copyWith(height: AppTextStyles.calculateSpacing(em));
 }
