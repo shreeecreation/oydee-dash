@@ -95,7 +95,7 @@ class CustomTextField<T extends Object> extends FormField<T> {
                   autofocus: autoFocus ?? false,
                   initialValue: initialValues,
                   inputFormatters: inputFormatters,
-                  obscureText: isPasswordField && !hasPasswordHandler.value,
+                  obscureText: isPasswordField && hasPasswordHandler.value,
                   style: AppTextStyles.text18PxMedium.black,
                   controller: controller,
                   keyboardType: inputType,
