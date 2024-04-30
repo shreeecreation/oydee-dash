@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             if (!isSmallScreen) HomePageSidebar(controller: _controller),
             Expanded(
               child: Center(
-                child: _ScreensExample(
+                child: HomeSideMenu(
                   controller: _controller,
                 ),
               ),
@@ -55,17 +55,16 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class _ScreensExample extends StatelessWidget {
-  const _ScreensExample({
-    Key? key,
+class HomeSideMenu extends StatelessWidget {
+  const HomeSideMenu({
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final SidebarXController controller;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {

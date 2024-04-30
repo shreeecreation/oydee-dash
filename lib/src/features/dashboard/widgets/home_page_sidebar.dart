@@ -1,12 +1,14 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:oydeeedashboard/src/core/components/components.dart';
+import 'package:oydeeedashboard/src/core/core.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class HomePageSidebar extends StatelessWidget {
   const HomePageSidebar({
     super.key,
     required SidebarXController controller,
-  })  : _controller = controller;
+  }) : _controller = controller;
 
   final SidebarXController _controller;
 
@@ -65,12 +67,22 @@ class HomePageSidebar extends StatelessWidget {
       ),
       footerDivider: divider,
       headerBuilder: (context, extended) {
-        return const SizedBox(
-          height: 100,
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Icon(Icons.person),
-          ),
+        return Column(
+          children: [
+            SizedBox(
+              height: 130,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: profilePicture(130),
+              ),
+            ),
+            Text(
+              "Welcome Admin\nDharbendra Prasad Yadav",
+              style: AppTextStyles.text14PxMedium.white,
+              textAlign: TextAlign.center,
+            ),
+            20.verticalSpace,
+          ],
         );
       },
       items: [
