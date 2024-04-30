@@ -14,6 +14,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   await _initDependencies();
   // Future.delayed(const Duration(milliseconds: 3000), () {});
+  runApp(await builder());
 }
 
 Future<void> _initDependencies() async {

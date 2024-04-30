@@ -68,6 +68,7 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           // Do something
+                          context.pushRoute(const HomeRoute());
                         }
                       },
                       fullWidth: true,

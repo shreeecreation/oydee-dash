@@ -11,14 +11,17 @@ class AppRouter extends $AppRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
   @override
   final List<AutoRoute> routes = [
-   
-
     //Auth Routes
     AutoRoute(
       page: LoginRoute.page,
       path: AppRoutes.loginPage,
+      initial: true,
     ),
-  
+
+    AutoRoute(
+      page: HomeRoute.page,
+      path: AppRoutes.homePage,
+    ),
   ];
 }
 
