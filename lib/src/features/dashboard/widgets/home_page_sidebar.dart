@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:oydeeedashboard/src/core/components/components.dart';
 import 'package:oydeeedashboard/src/core/core.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -78,7 +77,7 @@ class HomePageSidebar extends StatelessWidget {
             ),
             Text(
               "Welcome Admin\nDharbendra Prasad Yadav",
-              style: AppTextStyles.text14PxMedium.white,
+              style: AppTextStyles.text16PxMedium.white,
               textAlign: TextAlign.center,
             ),
             20.verticalSpace,
@@ -94,22 +93,36 @@ class HomePageSidebar extends StatelessWidget {
           },
         ),
         const SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
+          icon: Icons.post_add_sharp,
+          label: 'Posts',
         ),
         const SidebarXItem(
           icon: Icons.people,
-          label: 'People',
+          label: 'Users',
         ),
         SidebarXItem(
-          icon: Icons.favorite,
-          label: 'Favorites',
+          icon: Icons.feedback,
+          label: 'Feedback',
           selectable: false,
           onTap: () => _showDisabledAlert(context),
         ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
+        SidebarXItem(
+          icon: Icons.report_rounded,
+          label: 'Report',
+          selectable: false,
+          onTap: () => _showDisabledAlert(context),
+        ),
+        SidebarXItem(
+          icon: Icons.accessibility,
+          label: 'Access',
+          selectable: false,
+          onTap: () => _showDisabledAlert(context),
+        ),
+        SidebarXItem(
+          icon: Icons.settings,
+          label: 'Settings',
+          selectable: false,
+          onTap: () => _showDisabledAlert(context),
         ),
       ],
     );
@@ -133,16 +146,18 @@ String getTitleByIndex(int index) {
     case 0:
       return 'Home';
     case 1:
-      return 'Search';
+      return 'Posts';
     case 2:
-      return 'People';
+      return 'Users';
     case 3:
-      return 'Favorites';
+      return 'Feedback';
     case 4:
-      return 'Custom iconWidget';
+      return 'Report';
     case 5:
       return 'Profile';
     case 6:
+      return 'Access';
+    case 7:
       return 'Settings';
     default:
       return 'Not found page';
