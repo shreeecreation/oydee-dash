@@ -76,8 +76,8 @@ class HomePageSidebar extends StatelessWidget {
               ),
             ),
             Text(
-              "Welcome Admin\nDharbendra Prasad Yadav",
-              style: AppTextStyles.text16PxMedium.white,
+              "Welcome Admin\n\nDharbendra Prasad Yadav",
+              style: AppTextStyles.text11PxMedium.white,
               textAlign: TextAlign.center,
             ),
             20.verticalSpace,

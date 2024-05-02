@@ -5,6 +5,7 @@ import 'package:oydeeedashboard/src/features/auth/auth.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../widgets/widgets.dart';
+import 'pages.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -71,21 +72,10 @@ class HomeSideMenu extends StatelessWidget {
         final pageTitle = getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
-            return ListView.builder(
-              padding: const EdgeInsets.only(top: 10),
-              itemBuilder: (context, index) => Container(
-                height: 100,
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).canvasColor,
-                  boxShadow: const [BoxShadow()],
-                ),
-              ),
-            );
+            return HomeView();
+
           default:
-            return LoginPage();
+            return const LoginPage();
         }
       },
     );

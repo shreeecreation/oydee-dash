@@ -32,6 +32,8 @@ dependencies:
   sidebarx: ^0.17.1
 
 
+  get_it: any
+  injectable: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

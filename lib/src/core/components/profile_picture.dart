@@ -10,13 +10,13 @@ Widget profilePicture(double radius ) {
     radius: radius,
     child: profileImage != null
         ? AppCacheImageViewer(
-            imageUrl: profileImage!,
+            imageUrl: profileImage,
             imageTypeEnum: ImageTypeEnum.network,
           )
         : Builder(
             builder: (context) {
               final userName = name.trim().split(' ');
-              final firstName = userName.length > 0 ? userName[0] : '';
+              final firstName = userName.isNotEmpty ? userName[0] : '';
               final lastName = userName.length > 1 ? userName[1][0] : null;
               return Center(
                 child: Text(

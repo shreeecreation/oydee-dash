@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Text(
                       'Welcome! OYDEE',
-                      style: AppTextStyles.text30PxSemiBold,
+                      style: AppTextStyles.text20PxSemiBold,
                     ),
                     50.verticalSpace,
                     CustomTextField(
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                       children: [
                         Text(
                           "Forgot Password?",
-                          style: AppTextStyles.text13Px.statusRed,
+                          style: AppTextStyles.text11Px.statusRed,
                         ),
                       ],
                     ),

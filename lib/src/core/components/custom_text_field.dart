@@ -86,7 +86,7 @@ class CustomTextField<T extends Object> extends FormField<T> {
             if (textFieldLabel != null)
               Text(
                 textFieldLabel ?? "",
-                style: AppTextStyles.text18Px.textGrey,
+                style: AppTextStyles.text12Px.textGrey,
               ),
             if (textFieldLabel != null) 10.verticalSpace,
             ValueListenableBuilder(
@@ -96,7 +96,7 @@ class CustomTextField<T extends Object> extends FormField<T> {
                   initialValue: initialValues,
                   inputFormatters: inputFormatters,
                   obscureText: isPasswordField && hasPasswordHandler.value,
-                  style: AppTextStyles.text18PxMedium.black,
+                  style: AppTextStyles.text14PxMedium.black,
                   controller: controller,
                   keyboardType: inputType,
                   onTap: onTap,
@@ -155,11 +155,11 @@ class CustomTextField<T extends Object> extends FormField<T> {
                           )
                         : null,
                     labelText: labelText,
-                    labelStyle: AppTextStyles.text14PxMedium.copyWith(
+                    labelStyle: AppTextStyles.text12PxMedium.copyWith(
                       color: AppColors.textLightDark,
                     ),
                     hintStyle: hintStyle ??
-                        AppTextStyles.text16Px.copyWith(
+                        AppTextStyles.text14Px.copyWith(
                           color: AppColors.textLightDark.withOpacity(.25),
                         ),
                   ),

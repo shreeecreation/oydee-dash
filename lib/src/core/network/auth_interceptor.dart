@@ -1,8 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../routes/app_router.dart';
 import 'token_service.dart';
 
 @lazySingleton

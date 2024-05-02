@@ -7,10 +7,10 @@ import 'package:oydeeedashboard/src/core/core.dart';
 class AppCacheImageViewer extends CachedNetworkImage {
   AppCacheImageViewer({
     super.key,
-    required String imageUrl,
-    BoxFit fit = BoxFit.cover,
+    required super.imageUrl,
+    BoxFit super.fit = BoxFit.cover,
     required this.imageTypeEnum,
-  }) : super(imageUrl: imageUrl, fit: fit);
+  });
   final ImageTypeEnum imageTypeEnum;
 
   @override
@@ -29,7 +29,7 @@ class AppCacheImageViewer extends CachedNetworkImage {
           fit: fit,
           imageUrl: imageUrl,
           errorWidget: (context, url, error) {
-            return Text("");
+            return const Text("");
           },
         );
     }
