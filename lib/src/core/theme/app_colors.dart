@@ -35,6 +35,7 @@ abstract class AppColors {
   static const fadedBlack = Color(0x0000000D);
   static const dividerColor = Color(0xff7472E0);
   static const Color lightPrimary = Color(0xff09A8C8);
+  static const Color tileColor = Color(0xFFF8F9FB);
 
   static const Color softPrimary = Color(0xff150B3D);
 

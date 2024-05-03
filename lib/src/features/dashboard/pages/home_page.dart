@@ -74,6 +74,9 @@ class HomeSideMenu extends StatelessWidget {
           case 0:
             return HomeView();
 
+          case 1:
+            return PostsView();
+
           default:
             return const LoginPage();
         }

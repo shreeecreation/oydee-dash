@@ -8,125 +8,145 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               10.verticalSpace,
-              Text(
-                "Home",
-                style: AppTextStyles.text20PxBold,
-              ),
-              20.verticalSpace,
-              Text(
-                'Records of OYDEE',
-                style: AppTextStyles.text16PxSemiBold,
-              ),
-              20.verticalSpace,
-              Text("Posts"),
-              // ListView.builder(
-              //     shrinkWrap: true,
-              //     itemBuilder: (context, index) {
-              //       return Card(
-              //         child: ListTile(
-              //           leading: Icon(
-              //             getIconData(records.keys.elementAt(index)),
-              //             color: getColor(records.keys.elementAt(index)),
-              //           ),
-              //           title: Text(records.keys.elementAt(index)),
-              //           subtitle: Column(
-              //             crossAxisAlignment: CrossAxisAlignment.start,
-              //             children: [
-              //               Text("Total: ${records[records.keys.elementAt(index)]["total"]}"),
-              //               Text("Today: ${records[records.keys.elementAt(index)]["today"]}"),
-              //               Text("Yesterday: ${records[records.keys.elementAt(index)]["yesterday"]}"),
-              //             ],
-              //           ),
-              //         ),
-              //       );
-              //     },
-              //     itemCount: records.length),
-
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Card(
-                    margin: const EdgeInsets.all(10),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(
-                            size: 30,
-                            getIconData(records.keys.elementAt(0)),
-                            color: getColor(records.keys.elementAt(0)),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              20.verticalSpace,
-                              Text(
-                                "Total: ${records[records.keys.elementAt(0)]["total"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                              10.verticalSpace,
-                              Text(
-                                "Today: ${records[records.keys.elementAt(0)]["today"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                              10.verticalSpace,
-                              Text(
-                                "Yesterday: ${records[records.keys.elementAt(0)]["yesterday"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                  Text(
+                    "Dashboard",
+                    style: AppTextStyles.text30PxSemiBold,
                   ),
-                  Card(
-                    margin: const EdgeInsets.all(10),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(
-                            size: 30,
-                            getIconData(records.keys.elementAt(0)),
-                            color: getColor(records.keys.elementAt(0)),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              20.verticalSpace,
-                              Text(
-                                "Total: ${records[records.keys.elementAt(0)]["total"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                              10.verticalSpace,
-                              Text(
-                                "Today: ${records[records.keys.elementAt(0)]["today"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                              10.verticalSpace,
-                              Text(
-                                "Yesterday: ${records[records.keys.elementAt(0)]["yesterday"]}",
-                                style: AppTextStyles.text12PxMedium,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                  Row(
+                    children: [
+                      IconButton.filled(onPressed: () {}, icon: const Icon(Icons.search)),
+                      10.horizontalSpace,
+                      IconButton.filled(onPressed: () {}, icon: const Icon(Icons.notifications)),
+                      10.horizontalSpace,
+                      IconButton.filled(onPressed: () {}, icon: const Icon(Icons.mood_rounded)),
+                      10.horizontalSpace,
+                      IconButton.filled(onPressed: () {}, icon: const Icon(Icons.logout_outlined)),
+                      10.horizontalSpace,
+                    ],
                   ),
                 ],
-              )
+              ),
+              30.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "All Posts",
+                  style: AppTextStyles.text25PxSemiBold,
+                ),
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return HomeCard(
+                      index: index,
+                    );
+                  },
+                ),
+              ),
+              20.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Users",
+                  style: AppTextStyles.text25PxSemiBold,
+                ),
+              ),
+              const HomeCard(index: 3),
+              20.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Reports",
+                  style: AppTextStyles.text25PxSemiBold,
+                ),
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 2,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return HomeCard(
+                      index: index + 4,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HomeCard extends StatelessWidget {
+  const HomeCard({
+    super.key,
+    required this.index,
+  });
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 160,
+      width: 250,
+      child: Card(
+        elevation: 0.5,
+        color: AppColors.brandBackground,
+        margin: const EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(
+                    size: 60,
+                    getIconData(records.keys.elementAt(index)),
+                    color: AppColors.primary,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${records.keys.elementAt(index).toUpperCase()} : ${records[records.keys.elementAt(1)]["total"]}",
+                        style: AppTextStyles.text14PxSemiBold,
+                      ),
+                      15.verticalSpace,
+                      Text(
+                        "Today: ${records[records.keys.elementAt(1)]["today"]}",
+                        style: AppTextStyles.text14PxSemiBold,
+                      ),
+                      15.verticalSpace,
+                      Text(
+                        "Yesterday: ${records[records.keys.elementAt(1)]["yesterday"]}",
+                        style: AppTextStyles.text14PxSemiBold,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -146,6 +166,11 @@ Map<String, dynamic> records = {
     "today": "5",
     "yesterday": "10",
   },
+  "jobs": {
+    "total": "1100",
+    "today": "100",
+    "yesterday": "221",
+  },
   "users": {
     "total": "1000",
     "today": "5",
@@ -161,21 +186,16 @@ Map<String, dynamic> records = {
     "today": "5",
     "yesterday": "10",
   },
-  "jobs": {
-    "total": "1100",
-    "today": "100",
-    "yesterday": "221",
-  },
 };
 
 IconData getIconData(String key) {
   IconData iconData;
   switch (key) {
     case "posts":
-      iconData = Icons.chrome_reader_mode;
+      iconData = Icons.post_add;
       break;
     case "rooms":
-      iconData = Icons.hotel;
+      iconData = Icons.home;
       break;
     case "users":
       iconData = Icons.person;
@@ -194,32 +214,4 @@ IconData getIconData(String key) {
       break;
   }
   return iconData;
-}
-
-Color getColor(String key) {
-  Color color;
-  switch (key) {
-    case "posts":
-      color = Colors.blue;
-      break;
-    case "rooms":
-      color = Colors.green;
-      break;
-    case "users":
-      color = Colors.orange;
-      break;
-    case "feedbacks":
-      color = Colors.purple;
-      break;
-    case "reports":
-      color = Colors.red;
-      break;
-    case "jobs":
-      color = Colors.deepPurple;
-      break;
-    default:
-      color = Colors.grey;
-      break;
-  }
-  return color;
 }
