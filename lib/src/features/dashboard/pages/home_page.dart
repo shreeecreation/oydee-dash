@@ -72,10 +72,10 @@ class HomeSideMenu extends StatelessWidget {
         final pageTitle = getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
-            return HomeView();
+            return const HomeView();
 
           case 1:
-            return PostsView();
+            return const PostsView();
 
           default:
             return const LoginPage();

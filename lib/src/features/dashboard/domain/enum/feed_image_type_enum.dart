@@ -1,0 +1,1 @@
+enum FeedImageTypeEnum { image, video }
