@@ -4,3 +4,4 @@ export 'extensions/extensions.dart';
 export 'routes/routes.dart';
 export 'enum/enum.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'api_endpoints/api_endpoints.dart';

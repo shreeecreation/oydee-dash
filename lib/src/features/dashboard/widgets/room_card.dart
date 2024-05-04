@@ -4,7 +4,7 @@ import 'package:oydeeedashboard/src/core/core.dart';
 import '../dashboard.dart';
 
 class RoomCard extends StatelessWidget {
-  RoomCard(
+  const RoomCard(
       {super.key,
       required this.title,
       this.rating,
@@ -38,8 +38,8 @@ class RoomCard extends StatelessWidget {
                   width: 1,
                 )
               : null,
-          boxShadow: [
-            const BoxShadow(
+          boxShadow: const [
+            BoxShadow(
               color: AppColors.fadedBlack,
               offset: Offset(0, 4),
               blurRadius: 30,

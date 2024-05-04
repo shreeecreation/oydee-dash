@@ -2,17 +2,61 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:oydeeedashboard/src/core/core.dart';
+import 'package:oydeeedashboard/src/core/di/injector.dart';
 
+import '../bloc/get_feed_cubit.dart';
 import '../dashboard.dart';
+import '../widgets/show_post_widget.dart';
 
 class PostsView extends StatelessWidget {
   const PostsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return BlocProvider(
+      create: (context) => getIt<FeedCubit>()..getUserFeed(),
+      child: Builder(builder: (context) {
+        return BlocConsumer<FeedCubit, FeedState>(listener: (context, state) {
+          state.maybeWhen(
+            orElse: () => null,
+            success: (data, isLoadingMore, hasMoreItems) {
+              if (isLoadingMore) {}
+            },
+          );
+        }, builder: (context, state) {
+          return state.when(
+            initial: () => Container().toSliverBox,
+            validationError: (message) => Container(
+              child: Text(message.message),
+            ).toSliverBox,
+            error: () => const Text("Error"),
+            noInternet: (message) {
+              return const Text("NO Interenet");
+            },
+            loading: () => const Text("loading"),
+            success: (data, isLoadingMore, hasMoreItems) {
+              if (data.isEmpty) {
+                return const Text("Empty");
+              } else {
+                return ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    final feed = data[index];
+                    return SizedBox(
+                      width: 200,
+                      child: UserPost(feed: feed),
+                    );
+                  },
+                );
+              }
+            },
+          );
+        });
+      }),
+    );
   }
 }
 
@@ -43,16 +87,71 @@ class FeedTypePost extends StatelessWidget {
               text: feed.description ?? '',
             ),
           ),
+          // GestureDetector(
+          //   onLongPress: () {
+          //     _copyToClipboard(feed.description ?? '');
+          //   },
+          //   child: ExpandableText(
+          //     text: "this is my text <b>http:facebook.com</b> and <b>http://example.com<b> this is my text",
+          //     expandText: 'View More',
+          //     collapseText: 'View Less',
+          //     textStyle: TextStyle(fontSize: 16, color: Colors.black),
+          //     maxLines: 2,
+          //   ),
+          // ),
           if (feed.images.length != 0)
             PhotoGrid(
               imageUrls: feed.images.map((e) => e.url).toList(),
-              onImageClicked: (index) => print('Image Clicked: ${feed.images[index].url}'),
+              onImageClicked: (index) => print(index),
               onExpandClicked: () {},
               maxImages: 2,
               type: feed.images.map((e) => e.type).toList(),
             )
         ],
       ),
+    );
+  }
+}
+
+class FeedTypeRoom extends StatelessWidget {
+  const FeedTypeRoom({
+    super.key,
+    required this.roomInfo,
+  });
+
+  final RoomResponse roomInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+      child: RoomCard(
+        imageUrl: roomInfo.image,
+        title: roomInfo.name.toString(),
+        hasBorder: true,
+        location: roomInfo.location,
+        price: roomInfo.price.toString(),
+        onTap: () {},
+        paymentTypeEnum: roomInfo.paymentType,
+        roomStatus: RoomStatus.getStatus(roomInfo.roomStatus.name),
+      ),
+    );
+  }
+}
+
+class FeedTypeJob extends StatelessWidget {
+  const FeedTypeJob({
+    super.key,
+    required this.jobInfo,
+  });
+
+  final GetJobModel jobInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+      child: JobCard(jobModel: jobInfo, onTap: () {}),
     );
   }
 }
@@ -119,7 +218,7 @@ class _PhotoGridState extends State<PhotoGrid> {
                     fit: BoxFit.cover,
                     imageTypeEnum: ImageTypeEnum.network,
                   )
-                : Text("Vide"),
+                : const Text("dasdas"),
             onTap: () => widget.onImageClicked(index),
           );
         } else {
@@ -129,7 +228,7 @@ class _PhotoGridState extends State<PhotoGrid> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                imageTypeEnum[index] == FeedImageTypeEnum.image ? Image.network(imageUrl, fit: BoxFit.cover) : Text("Video"),
+                imageTypeEnum[index] == FeedImageTypeEnum.image ? Image.network(imageUrl, fit: BoxFit.cover) : const TypeViddeoWidget(),
                 Positioned.fill(
                   child: Container(
                     alignment: Alignment.center,
@@ -165,13 +264,75 @@ class _PhotoGridState extends State<PhotoGrid> {
                       fit: BoxFit.fill,
                       imageTypeEnum: ImageTypeEnum.network,
                     )
-              : Text("data"),
+              : const Text("Video,"),
           onTap: () => widget.onImageClicked(index),
         );
       }
     });
   }
 }
+
+class TypeViddeoWidget extends StatelessWidget {
+  const TypeViddeoWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0.5,
+      color: AppColors.greyColor.withOpacity(1),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: const Icon(
+        Icons.video_call,
+        color: AppColors.primary,
+        size: 55,
+      ),
+    );
+  }
+}
+
+// class VideoThumbnailWidget extends StatelessWidget {
+//   const VideoThumbnailWidget({required this.url, required this.imageLength});
+//   final String url;
+//   final int imageLength;
+//   @override
+//   Widget build(BuildContext context) {
+//     final cubit = context.read<ThumbnailMakerCubit>();
+//     cubit.fetchThumbnail(url);
+//     return BlocBuilder<ThumbnailMakerCubit, ThumbnailMakerState?>(
+//       builder: (context, state) {
+//         return state!.maybeWhen(
+//             orElse: Container.new,
+//             success: (url) => Stack(
+//                   alignment: Alignment.center,
+//                   children: [
+//                     SingleVideoPlayerWidget(
+//                       url: url,
+//                     ),
+//                     const Icon(
+//                       Icons.play_circle_fill,
+//                       size: 64,
+//                       color: Colors.white,
+//                     ),
+//                   ],
+//                 ),
+//             loading: () => Shimmer.fromColors(
+//                   baseColor: AppColors.white,
+//                   highlightColor: AppColors.lightWhite,
+//                   child: Container(
+//                     width: 200,
+//                     height: 100,
+//                     color: AppColors.white,
+//                   ),
+//                 ));
+//       },
+//     );
+//     // return SingleVideoPlayerWidget(url: url);
+//   }
+// }
 
 class ExpandableLinkify extends StatefulWidget {
   ExpandableLinkify({required this.text});
@@ -241,61 +402,3 @@ class _ExpandableLinkifyState extends State<ExpandableLinkify> {
     String url = link.url;
   }
 }
-
-
-// class FeedTypeRoom extends StatelessWidget {
-//   const FeedTypeRoom({
-//     super.key,
-//     required this.roomInfo,
-//   });
-
-//   final RoomModel roomInfo;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-//       child: RoomCard(
-//         imageUrl: roomInfo.image,
-//         title: roomInfo.name.toString(),
-//         hasBorder: true,
-//         location: roomInfo.location,
-//         price: roomInfo.price.toString(),
-//         onTap: () => context.navigateTo(
-//           RoomFinderWrapperRoute(children: [
-//             const RoomFinderRoute(),
-//             RoomInfoRoute(id: roomInfo.id),
-//           ]),
-//         ),
-//         paymentTypeEnum: roomInfo.paymentType, roomStatus: RoomStatus.getStatus(roomInfo.roomStatus.name),
-//       ),
-//     );
-//   }
-// }
-
-// class FeedTypeJob extends StatelessWidget {
-//   const FeedTypeJob({
-//     super.key,
-//     required this.jobInfo,
-//   });
-
-//   final GetJobModel jobInfo;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-//       child: JobCard(
-//         jobModel: jobInfo,
-//         onTap: () => context.navigateTo(
-//           FeedJobWrapperRoute(
-//             children: [
-//               FeedJobRoute(),
-//               JobInfoRoute(id: jobInfo.id),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

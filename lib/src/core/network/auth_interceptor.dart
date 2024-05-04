@@ -52,12 +52,13 @@ class AuthInterceptor extends QueuedInterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     // final hasSession = await _service.hasSession;
-
+    const String token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdlY2UyMTM0LTYzYzQtNDNhOC1iZjU5LWE3OWQ4NzE1NDIzYiIsImlhdCI6MTcxNDgyNzE1MiwiZXhwIjoxNzE0OTEzNTUyLCJzdWIiOiI3ZWNlMjEzNC02M2M0LTQzYTgtYmY1OS1hNzlkODcxNTQyM2IifQ.UF1FsHOEsycfZ_wkVQn5PM3Bs2OncCEAnGJlzXqrN9E";
     // if (hasSession) {
     //   final token = await _service.token;
-    //   options.headers.addAll({'Authorization': 'Bearer ${token}'});
+    options.headers.addAll({'Authorization': 'Bearer $token'});
     // }
-    // handler.next(options);
+    handler.next(options);
   }
 
   @override

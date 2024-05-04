@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,7 +9,7 @@ class DeviceInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final deviceType = Platform.isAndroid ? 'Android' : 'Ios';
+    // final deviceType = Platform.isAndroid ? 'Android' : 'Ios';
     // final deviceId = await .getDeviceId();
     // options.headers.addAll({
     //   'device-type': deviceType,

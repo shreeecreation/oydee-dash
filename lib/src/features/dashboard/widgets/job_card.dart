@@ -40,7 +40,7 @@ class JobCard extends StatelessWidget {
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: AppCacheImageViewer(
-                    imageUrl: "",
+                    imageUrl: "images/logo.png",
                     imageTypeEnum: ImageTypeEnum.assets,
                   ),
                 ),

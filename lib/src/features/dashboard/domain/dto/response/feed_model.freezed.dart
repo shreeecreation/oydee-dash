@@ -27,6 +27,8 @@ mixin _$FeedModel {
   List<ImageModel> get images => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   int get commentCount => throw _privateConstructorUsedError;
+  RoomResponse? get room => throw _privateConstructorUsedError;
+  GetJobModel? get job => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +48,13 @@ abstract class $FeedModelCopyWith<$Res> {
       String? description,
       List<ImageModel> images,
       String createdAt,
-      int commentCount});
+      int commentCount,
+      RoomResponse? room,
+      GetJobModel? job});
 
   $UserModelCopyWith<$Res> get user;
+  $RoomResponseCopyWith<$Res>? get room;
+  $GetJobModelCopyWith<$Res>? get job;
 }
 
 /// @nodoc
@@ -71,6 +77,8 @@ class _$FeedModelCopyWithImpl<$Res, $Val extends FeedModel>
     Object? images = null,
     Object? createdAt = null,
     Object? commentCount = null,
+    Object? room = freezed,
+    Object? job = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,6 +109,14 @@ class _$FeedModelCopyWithImpl<$Res, $Val extends FeedModel>
           ? _value.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
               as int,
+      room: freezed == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as RoomResponse?,
+      job: freezed == job
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as GetJobModel?,
     ) as $Val);
   }
 
@@ -109,6 +125,30 @@ class _$FeedModelCopyWithImpl<$Res, $Val extends FeedModel>
   $UserModelCopyWith<$Res> get user {
     return $UserModelCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RoomResponseCopyWith<$Res>? get room {
+    if (_value.room == null) {
+      return null;
+    }
+
+    return $RoomResponseCopyWith<$Res>(_value.room!, (value) {
+      return _then(_value.copyWith(room: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GetJobModelCopyWith<$Res>? get job {
+    if (_value.job == null) {
+      return null;
+    }
+
+    return $GetJobModelCopyWith<$Res>(_value.job!, (value) {
+      return _then(_value.copyWith(job: value) as $Val);
     });
   }
 }
@@ -128,10 +168,16 @@ abstract class _$$FeedModelImplCopyWith<$Res>
       String? description,
       List<ImageModel> images,
       String createdAt,
-      int commentCount});
+      int commentCount,
+      RoomResponse? room,
+      GetJobModel? job});
 
   @override
   $UserModelCopyWith<$Res> get user;
+  @override
+  $RoomResponseCopyWith<$Res>? get room;
+  @override
+  $GetJobModelCopyWith<$Res>? get job;
 }
 
 /// @nodoc
@@ -152,6 +198,8 @@ class __$$FeedModelImplCopyWithImpl<$Res>
     Object? images = null,
     Object? createdAt = null,
     Object? commentCount = null,
+    Object? room = freezed,
+    Object? job = freezed,
   }) {
     return _then(_$FeedModelImpl(
       id: null == id
@@ -182,6 +230,14 @@ class __$$FeedModelImplCopyWithImpl<$Res>
           ? _value.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
               as int,
+      room: freezed == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as RoomResponse?,
+      job: freezed == job
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as GetJobModel?,
     ));
   }
 }
@@ -192,11 +248,13 @@ class _$FeedModelImpl implements _FeedModel {
   const _$FeedModelImpl(
       {required this.id,
       required this.user,
-      this.postType = FeedType.post,
+      this.postType = FeedType.POST,
       this.description,
       final List<ImageModel> images = const [],
       required this.createdAt,
-      this.commentCount = 0})
+      this.commentCount = 0,
+      this.room,
+      this.job})
       : _images = images;
 
   factory _$FeedModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -225,10 +283,14 @@ class _$FeedModelImpl implements _FeedModel {
   @override
   @JsonKey()
   final int commentCount;
+  @override
+  final RoomResponse? room;
+  @override
+  final GetJobModel? job;
 
   @override
   String toString() {
-    return 'FeedModel(id: $id, user: $user, postType: $postType, description: $description, images: $images, createdAt: $createdAt, commentCount: $commentCount)';
+    return 'FeedModel(id: $id, user: $user, postType: $postType, description: $description, images: $images, createdAt: $createdAt, commentCount: $commentCount, room: $room, job: $job)';
   }
 
   @override
@@ -246,13 +308,24 @@ class _$FeedModelImpl implements _FeedModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.commentCount, commentCount) ||
-                other.commentCount == commentCount));
+                other.commentCount == commentCount) &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.job, job) || other.job == job));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, user, postType, description,
-      const DeepCollectionEquality().hash(_images), createdAt, commentCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      user,
+      postType,
+      description,
+      const DeepCollectionEquality().hash(_images),
+      createdAt,
+      commentCount,
+      room,
+      job);
 
   @JsonKey(ignore: true)
   @override
@@ -276,7 +349,9 @@ abstract class _FeedModel implements FeedModel {
       final String? description,
       final List<ImageModel> images,
       required final String createdAt,
-      final int commentCount}) = _$FeedModelImpl;
+      final int commentCount,
+      final RoomResponse? room,
+      final GetJobModel? job}) = _$FeedModelImpl;
 
   factory _FeedModel.fromJson(Map<String, dynamic> json) =
       _$FeedModelImpl.fromJson;
@@ -295,6 +370,10 @@ abstract class _FeedModel implements FeedModel {
   String get createdAt;
   @override
   int get commentCount;
+  @override
+  RoomResponse? get room;
+  @override
+  GetJobModel? get job;
   @override
   @JsonKey(ignore: true)
   _$$FeedModelImplCopyWith<_$FeedModelImpl> get copyWith =>

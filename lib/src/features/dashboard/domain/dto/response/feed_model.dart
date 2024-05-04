@@ -1,7 +1,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../enum/feed_type_enum.dart';
-import '../request/image_model.dart';
+import '../../../dashboard.dart';
 import '../../../../auth/domain/dto/response/user_response.dart';
 
 part 'feed_model.g.dart';
@@ -12,11 +11,13 @@ class FeedModel with _$FeedModel {
   const factory FeedModel({
     required String id,
     required UserModel user,
-    @Default(FeedType.post) FeedType postType,
+    @Default(FeedType.POST) FeedType postType,
     String? description,
     @Default([]) List<ImageModel> images,
     required String createdAt,
     @Default(0) int commentCount,
+     RoomResponse? room,
+    GetJobModel? job,
   }) = _FeedModel;
   factory FeedModel.fromJson(Map<String, dynamic> json) => _$FeedModelFromJson(json);
 }

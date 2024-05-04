@@ -11,7 +11,7 @@ _$FeedModelImpl _$$FeedModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
       postType: $enumDecodeNullable(_$FeedTypeEnumMap, json['postType']) ??
-          FeedType.post,
+          FeedType.POST,
       description: json['description'] as String?,
       images: (json['images'] as List<dynamic>?)
               ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
@@ -19,6 +19,12 @@ _$FeedModelImpl _$$FeedModelImplFromJson(Map<String, dynamic> json) =>
           const [],
       createdAt: json['createdAt'] as String,
       commentCount: (json['commentCount'] as num?)?.toInt() ?? 0,
+      room: json['room'] == null
+          ? null
+          : RoomResponse.fromJson(json['room'] as Map<String, dynamic>),
+      job: json['job'] == null
+          ? null
+          : GetJobModel.fromJson(json['job'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FeedModelImplToJson(_$FeedModelImpl instance) =>
@@ -30,11 +36,13 @@ Map<String, dynamic> _$$FeedModelImplToJson(_$FeedModelImpl instance) =>
       'images': instance.images,
       'createdAt': instance.createdAt,
       'commentCount': instance.commentCount,
+      'room': instance.room,
+      'job': instance.job,
     };
 
 const _$FeedTypeEnumMap = {
-  FeedType.post: 'post',
-  FeedType.room: 'room',
-  FeedType.job: 'job',
-  FeedType.ads: 'ads',
+  FeedType.POST: 'POST',
+  FeedType.ROOM: 'ROOM',
+  FeedType.JOB: 'JOB',
+  FeedType.ADS: 'ADS',
 };

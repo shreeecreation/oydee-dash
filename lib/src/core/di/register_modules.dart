@@ -9,11 +9,8 @@ import '../network/device_interceptor.dart';
 
 @module
 abstract class RegisterModules {
-
   @singleton
   AppRouter get router => AppRouter();
-
-
 
   @lazySingleton
   Dio dio(DeviceInterceptor deviceInterceptor, AuthInterceptor authInterceptor) => Dio(BaseOptions(

@@ -12,6 +12,7 @@ enum RoomPaymentTypeEnum {
   const RoomPaymentTypeEnum(this.title);
   final String title;
 }
+enum RentTypeEnum { week, monthly }
 
 enum RoomTypeEnum { apartment, house, combo, studio, townhouse, basement, duplex, loft, other }
 

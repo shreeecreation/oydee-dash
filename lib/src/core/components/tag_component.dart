@@ -9,7 +9,7 @@ class Tag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      label: Text(this.title, style: AppTextStyles.text12PxSemiBold),
+      label: Text(title, style: AppTextStyles.text12PxSemiBold),
       backgroundColor: AppColors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),

@@ -1,1 +1,1 @@
-enum FeedType { post, room, job, ads }
+enum FeedType { POST, ROOM, JOB, ADS }

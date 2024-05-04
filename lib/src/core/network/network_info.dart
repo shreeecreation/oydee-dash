@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -10,9 +12,9 @@ abstract class NetworkInfo {
 
 @LazySingleton(as: NetworkInfo)
 class NetworkInfoImpl implements NetworkInfo {
-  const NetworkInfoImpl(this.checker);
+  const NetworkInfoImpl();
 
-  final InternetConnectionChecker checker;
+  static InternetConnectionChecker checker = InternetConnectionChecker();
 
   @override
   Future<bool> get isConnected => checker.hasConnection;
