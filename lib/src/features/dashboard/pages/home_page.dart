@@ -1,10 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oydeeedashboard/src/core/core.dart';
-import 'package:oydeeedashboard/src/core/di/injector.dart';
 import 'package:oydeeedashboard/src/features/auth/auth.dart';
-import 'package:oydeeedashboard/src/features/dashboard/bloc/get_feed_cubit.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../widgets/widgets.dart';
@@ -27,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     return Builder(builder: (context) {
       final isSmallScreen = MediaQuery.of(context).size.width < 600;
       return Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.white,
         key: _key,
         appBar: isSmallScreen
             ? AppBar(

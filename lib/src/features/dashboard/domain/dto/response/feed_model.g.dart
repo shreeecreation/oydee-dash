@@ -25,6 +25,7 @@ _$FeedModelImpl _$$FeedModelImplFromJson(Map<String, dynamic> json) =>
       job: json['job'] == null
           ? null
           : GetJobModel.fromJson(json['job'] as Map<String, dynamic>),
+      like: (json['like'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$FeedModelImplToJson(_$FeedModelImpl instance) =>
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$FeedModelImplToJson(_$FeedModelImpl instance) =>
       'commentCount': instance.commentCount,
       'room': instance.room,
       'job': instance.job,
+      'like': instance.like,
     };
 
 const _$FeedTypeEnumMap = {

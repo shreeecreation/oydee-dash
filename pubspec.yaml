@@ -61,10 +61,12 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
 
 flutter_gen:
   output: lib/src/core/assets/
+  
 
   integrations:
     flutter_svg: true

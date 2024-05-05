@@ -18,6 +18,7 @@ class FeedModel with _$FeedModel {
     @Default(0) int commentCount,
      RoomResponse? room,
     GetJobModel? job,
+    @Default(0) int like,
   }) = _FeedModel;
   factory FeedModel.fromJson(Map<String, dynamic> json) => _$FeedModelFromJson(json);
 }

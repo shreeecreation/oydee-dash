@@ -19,42 +19,81 @@ class PostsView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<FeedCubit>()..getUserFeed(),
       child: Builder(builder: (context) {
-        return BlocConsumer<FeedCubit, FeedState>(listener: (context, state) {
-          state.maybeWhen(
-            orElse: () => null,
-            success: (data, isLoadingMore, hasMoreItems) {
-              if (isLoadingMore) {}
-            },
-          );
-        }, builder: (context, state) {
-          return state.when(
-            initial: () => Container().toSliverBox,
-            validationError: (message) => Container(
-              child: Text(message.message),
-            ).toSliverBox,
-            error: () => const Text("Error"),
-            noInternet: (message) {
-              return const Text("NO Interenet");
-            },
-            loading: () => const Text("loading"),
-            success: (data, isLoadingMore, hasMoreItems) {
-              if (data.isEmpty) {
-                return const Text("Empty");
-              } else {
-                return ListView.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    final feed = data[index];
-                    return SizedBox(
-                      width: 200,
-                      child: UserPost(feed: feed),
-                    );
+        return SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              10.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "All Posts",
+                      style: AppTextStyles.text30PxSemiBold,
+                    ),
+                    Row(
+                      children: [
+                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.search)),
+                        10.horizontalSpace,
+                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.notifications)),
+                        10.horizontalSpace,
+                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.mood_rounded)),
+                        10.horizontalSpace,
+                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.logout_outlined)),
+                        10.horizontalSpace,
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              BlocConsumer<FeedCubit, FeedState>(listener: (context, state) {
+                state.maybeWhen(
+                  orElse: () => null,
+                  success: (data, isLoadingMore, hasMoreItems) {
+                    if (isLoadingMore) {}
                   },
                 );
-              }
-            },
-          );
-        });
+              }, builder: (context, state) {
+                return state.when(
+                  initial: () => Container().toSliverBox,
+                  validationError: (message) => Container(
+                    child: Text(message.message),
+                  ).toSliverBox,
+                  error: () => const Text("Error"),
+                  noInternet: (message) {
+                    return const Text("NO Interenet");
+                  },
+                  loading: () => const Text("loading"),
+                  success: (data, isLoadingMore, hasMoreItems) {
+                    if (data.isEmpty) {
+                      return const Text("Empty");
+                    } else {
+                      return ListView.builder(
+                        itemCount: data.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final feed = data[index];
+                          return Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              20.horizontalSpace,
+                              SizedBox(width: context.width / 2, child: UserPost(feed: feed)),
+                              20.horizontalSpace,
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                );
+              }),
+            ],
+          ),
+        );
       }),
     );
   }

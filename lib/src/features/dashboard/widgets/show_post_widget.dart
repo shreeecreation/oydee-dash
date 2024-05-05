@@ -40,6 +40,7 @@ class _UserPostState extends State<UserPost> with AutomaticKeepAliveClientMixin 
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(widget.feed.user.name, style: AppTextStyles.text16PxBold),
+                      10.verticalSpace,
                       Text(
                         widget.feed.createdAt.format,
                         style: AppTextStyles.text12Px.textGrey,
@@ -50,6 +51,19 @@ class _UserPostState extends State<UserPost> with AutomaticKeepAliveClientMixin 
                   trailing: Icon(Icons.more_vert)),
             ),
             FeedBody(feed: widget.feed),
+            ReactionWidget(
+              hasLiked: false,
+              onShare: () {
+                // final type = widget.feed.postType;
+                // final user = context.read<UserInfoCubit>().state.userInfo;
+                // Share.share('${user?.name} shared a ${type.name}\n\nhttps://oydee.app/feed/${widget.feed.id}');
+                // HapticFeedback.lightImpact();
+              },
+              commentCount: widget.feed.commentCount,
+              likeCount: widget.feed.like,
+              feedId: widget.feed.id,
+              canShare: true,
+            ),
             ListTile(
               contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               leading: widget.feed.user.profilePicture,
