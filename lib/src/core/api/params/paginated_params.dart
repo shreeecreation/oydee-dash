@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:oydeeedashboard/src/features/dashboard/dashboard.dart';
 
 class PaginationParam extends Equatable {
-  PaginationParam({
+  const PaginationParam({
     this.page = 1,
     this.limit = 10,
-    this.userId = null,
+    this.userId,
     this.feedPostType,
   });
 

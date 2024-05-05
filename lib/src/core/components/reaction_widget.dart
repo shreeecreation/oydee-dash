@@ -43,7 +43,7 @@ class ReactionWidget extends StatelessWidget {
                       return IconButton(
                         onPressed: () {},
                         icon: Assets.icons.favoriteIcon.svg(
-                          colorFilter: ColorFilter.mode(
+                          colorFilter: const ColorFilter.mode(
                             AppColors.black,
                             BlendMode.srcIn,
                           ),
@@ -81,7 +81,7 @@ class ReactionWidget extends StatelessWidget {
             ],
           ),
           canShare ? const Spacer() : const Text(''),
-          if (seenCount > 0) canShare ? Text('Seen by ${seenCount}') : const Text(''),
+          if (seenCount > 0) canShare ? Text('Seen by $seenCount') : const Text(''),
         ],
       ),
     );

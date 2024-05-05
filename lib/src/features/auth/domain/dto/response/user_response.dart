@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'package:oydeeedashboard/src/core/core.dart';
+import 'package:oydeeedashboard/src/core/components/components.dart';
+import 'package:oydeeedashboard/src/core/enum/enum.dart';
+import 'package:oydeeedashboard/src/core/theme/theme.dart';
 
 part 'user_response.g.dart';
 part 'user_response.freezed.dart';
@@ -18,8 +19,7 @@ class UserModel with _$UserModel {
     String? phoneNumber,
   }) = _UserModel;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
   Widget get profilePicture {
     return GradientCircle(
@@ -27,7 +27,7 @@ class UserModel with _$UserModel {
       radius: 40,
       child: profileImage != null
           ? AppCacheImageViewer(
-              imageUrl: profileImage,
+              imageUrl: profileImage!,
               imageTypeEnum: ImageTypeEnum.network,
             )
           : Builder(

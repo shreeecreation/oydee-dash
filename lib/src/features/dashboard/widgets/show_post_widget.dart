@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oydeeedashboard/src/core/core.dart';
 
+import '../../../core/components/post_edit_dropdown_menu.dart';
 import '../dashboard.dart';
 
 class UserPost extends StatefulWidget {
@@ -30,25 +31,26 @@ class _UserPostState extends State<UserPost> with AutomaticKeepAliveClientMixin 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: widget.feed.user.profilePicture,
-                  ),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(widget.feed.user.name, style: AppTextStyles.text16PxBold),
-                      10.verticalSpace,
-                      Text(
-                        widget.feed.createdAt.format,
-                        style: AppTextStyles.text12Px.textGrey,
-                      ),
-                    ],
-                  ),
-                  onTap: () {},
-                  trailing: Icon(Icons.more_vert)),
+                contentPadding: EdgeInsets.zero,
+                leading: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: widget.feed.user.profilePicture,
+                ),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.feed.user.name, style: AppTextStyles.text16PxBold),
+                    10.verticalSpace,
+                    Text(
+                      widget.feed.createdAt.format,
+                      style: AppTextStyles.text12Px.textGrey,
+                    ),
+                  ],
+                ),
+                onTap: () {},
+                trailing: PostEditDropdownMenu(feed: widget.feed),
+              ),
             ),
             FeedBody(feed: widget.feed),
             ReactionWidget(
@@ -100,7 +102,7 @@ class _UserPostState extends State<UserPost> with AutomaticKeepAliveClientMixin 
 }
 
 class FeedBody extends StatelessWidget {
-  FeedBody({super.key, required this.feed});
+  const FeedBody({super.key, required this.feed});
 
   final FeedModel feed;
 

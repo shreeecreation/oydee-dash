@@ -28,8 +28,7 @@ class NoInternetError  {
 }
 
 class ValidationError extends ServerError {
-  const ValidationError({required String message, required this.errors})
-      : super(message: message);
+  const ValidationError({required super.message, required this.errors});
 
   final Map<String, dynamic> errors;
 }

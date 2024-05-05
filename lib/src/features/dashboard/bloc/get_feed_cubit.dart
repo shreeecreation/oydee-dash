@@ -19,9 +19,9 @@ class FeedCubit extends Cubit<FeedState> {
 
   // pagination params
   late int _page = 1;
-  late int _limit = 8;
+  late final int _limit = 8;
 
-  void set handleLoadMore(bool enable) => hasNext = enable;
+  set handleLoadMore(bool enable) => hasNext = enable;
 
   Future<void> getUserFeed() async {
     emit(const FeedState.loading());

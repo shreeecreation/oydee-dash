@@ -96,14 +96,6 @@ class HomePageSidebar extends StatelessWidget {
           label: 'Posts',
         ),
         const SidebarXItem(
-          icon: Icons.home,
-          label: 'Rooms',
-        ),
-        const SidebarXItem(
-          icon: Icons.work,
-          label: 'Jobs',
-        ),
-        const SidebarXItem(
           icon: Icons.people,
           label: 'Users',
         ),

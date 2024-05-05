@@ -19,79 +19,81 @@ class PostsView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<FeedCubit>()..getUserFeed(),
       child: Builder(builder: (context) {
-        return SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              10.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "All Posts",
-                      style: AppTextStyles.text30PxSemiBold,
-                    ),
-                    Row(
-                      children: [
-                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.search)),
-                        10.horizontalSpace,
-                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.notifications)),
-                        10.horizontalSpace,
-                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.mood_rounded)),
-                        10.horizontalSpace,
-                        IconButton.filled(onPressed: () {}, icon: const Icon(Icons.logout_outlined)),
-                        10.horizontalSpace,
-                      ],
-                    ),
-                  ],
+        return SizedBox(
+          height: context.height,
+          child: SingleChildScrollView( 
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                10.verticalSpace,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "All Posts",
+                        style: AppTextStyles.text30PxSemiBold,
+                      ),
+                      Row(
+                        children: [
+                          IconButton.filled(onPressed: () {}, icon: const Icon(Icons.search)),
+                          10.horizontalSpace,
+                          IconButton.filled(onPressed: () {}, icon: const Icon(Icons.notifications)),
+                          10.horizontalSpace,
+                          IconButton.filled(onPressed: () {}, icon: const Icon(Icons.mood_rounded)),
+                          10.horizontalSpace,
+                          IconButton.filled(onPressed: () {}, icon: const Icon(Icons.logout_outlined)),
+                          10.horizontalSpace,
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              BlocConsumer<FeedCubit, FeedState>(listener: (context, state) {
-                state.maybeWhen(
-                  orElse: () => null,
-                  success: (data, isLoadingMore, hasMoreItems) {
-                    if (isLoadingMore) {}
-                  },
-                );
-              }, builder: (context, state) {
-                return state.when(
-                  initial: () => Container().toSliverBox,
-                  validationError: (message) => Container(
-                    child: Text(message.message),
-                  ).toSliverBox,
-                  error: () => const Text("Error"),
-                  noInternet: (message) {
-                    return const Text("NO Interenet");
-                  },
-                  loading: () => const Text("loading"),
-                  success: (data, isLoadingMore, hasMoreItems) {
-                    if (data.isEmpty) {
-                      return const Text("Empty");
-                    } else {
-                      return ListView.builder(
-                        itemCount: data.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          final feed = data[index];
-                          return Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              20.horizontalSpace,
-                              SizedBox(width: context.width / 2, child: UserPost(feed: feed)),
-                              20.horizontalSpace,
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  },
-                );
-              }),
-            ],
+                BlocConsumer<FeedCubit, FeedState>(listener: (context, state) {
+                  state.maybeWhen(
+                    orElse: () => null,
+                    success: (data, isLoadingMore, hasMoreItems) {
+                      if (isLoadingMore) {}
+                    },
+                  );
+                }, builder: (context, state) {
+                  return state.when(
+                    initial: () => Container().toSliverBox,
+                    validationError: (message) => Container(
+                      child: Text(message.message),
+                    ).toSliverBox,
+                    error: () => const Text("Error"),
+                    noInternet: (message) {
+                      return const Text("NO Interenet");
+                    },
+                    loading: () => const Text("loading"),
+                    success: (data, isLoadingMore, hasMoreItems) {
+                      if (data.isEmpty) {
+                        return const Text("Empty");
+                      } else {
+                        return ListView.builder(
+                          itemCount: data.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            final feed = data[index];
+                            return Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                20.horizontalSpace,
+                                SizedBox(width: context.width / 2, child: UserPost(feed: feed)),
+                                20.horizontalSpace,
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    },
+                  );
+                }),
+              ],
+            ),
           ),
         );
       }),
@@ -109,7 +111,7 @@ class FeedTypePost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _copyToClipboard(String text) {
+    void copyToClipboard(String text) {
       Clipboard.setData(ClipboardData(text: text));
     }
 
@@ -120,7 +122,7 @@ class FeedTypePost extends StatelessWidget {
         children: [
           GestureDetector(
             onLongPress: () {
-              _copyToClipboard(feed.description ?? '');
+              copyToClipboard(feed.description ?? '');
             },
             child: ExpandableLinkify(
               text: feed.description ?? '',
@@ -138,7 +140,7 @@ class FeedTypePost extends StatelessWidget {
           //     maxLines: 2,
           //   ),
           // ),
-          if (feed.images.length != 0)
+          if (feed.images.isNotEmpty)
             PhotoGrid(
               imageUrls: feed.images.map((e) => e.url).toList(),
               onImageClicked: (index) => print(index),
@@ -196,8 +198,7 @@ class FeedTypeJob extends StatelessWidget {
 }
 
 class PhotoGrid extends StatefulWidget {
-  PhotoGrid({required this.imageUrls, required this.onImageClicked, required this.onExpandClicked, this.maxImages = 4, required this.type, Key? key})
-      : super(key: key);
+  const PhotoGrid({required this.imageUrls, required this.onImageClicked, required this.onExpandClicked, this.maxImages = 4, required this.type, super.key});
   final int maxImages;
   final List<String> type;
   final List<String> imageUrls;
@@ -273,7 +274,7 @@ class _PhotoGridState extends State<PhotoGrid> {
                     alignment: Alignment.center,
                     color: Colors.black54,
                     child: Text(
-                      '+' + remaining.toString(),
+                      '+$remaining',
                       style: const TextStyle(fontSize: 32),
                     ),
                   ),
@@ -288,7 +289,7 @@ class _PhotoGridState extends State<PhotoGrid> {
               ? widget.imageUrls.length == 1
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Container(
+                      child: SizedBox(
                         height: 200,
                         width: double.infinity,
                         child: AppCacheImageViewer(
@@ -374,7 +375,7 @@ class TypeViddeoWidget extends StatelessWidget {
 // }
 
 class ExpandableLinkify extends StatefulWidget {
-  ExpandableLinkify({required this.text});
+  const ExpandableLinkify({super.key, required this.text});
   final String text;
 
   @override
